@@ -1,11 +1,12 @@
-import {action, computed, makeObservable, observable} from 'mobx'
+import {action, computed, makeObservable, observable, toJS} from 'mobx'
 import {InvoiceModel as Model, InvoiceMeta as Meta} from '../models'
 import {InvoiceServices as Service} from "../services"
 
 export default class InvoiceStore {
   _list = new observable.map()
   _item = {}
-  state = 'pending' // "pending" / "fetching", "done" / "error"
+  state = 'pending' // "listing" / "getting", "done" / "error"
+  detailState = 'detailState' // "listing" / "getting", "done" / "error"
   meta = {}
 
   constructor(Stores) {
@@ -15,9 +16,11 @@ export default class InvoiceStore {
       _list: observable,
       _item: observable,
       state: observable,
+      detailState: observable,
       meta: observable,
 
       list: computed,
+      item: computed,
 
       read: action,
 
@@ -28,14 +31,14 @@ export default class InvoiceStore {
 
   read({id, params = {}}) {
     if (id) {
-      this.state = 'getting'
+      this.detailState = 'getting'
       Service.detail({id, params}).then(res => {
         this._item = new Model(res.item || {})
-        this.state = 'done'
+        this.detailState = 'done'
       }, this.handleError)
     } else {
       this.state = 'listing'
-      Service.read({params}).then(this.fetchSuccess, this.handleError)
+      return Service.read({params}).then(this.fetchSuccess, this.handleError)
     }
   }
 
@@ -47,6 +50,7 @@ export default class InvoiceStore {
       })
     if (res.meta) this.meta = new Meta(res.meta)
     this.state = 'done'
+    return res;
   }
 
   handleError(error) {
@@ -56,5 +60,9 @@ export default class InvoiceStore {
 
   get list() {
     return [...this._list.values()]
+  }
+
+  get item() {
+    return toJS(this._item)
   }
 }

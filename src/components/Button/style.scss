@@ -35,13 +35,13 @@
   }
 
   &.add-btn{
-    background-color: var(--light-green);
+    background-color: #69e53b;
     border-radius: 5px;
 
     &.light {
       background-color: transparent !important;
-      border: solid 1px var(--light-green);
-      color: var(--light-green);
+      border: solid 1px #69e53b;
+      color: #69e53b;
     }
   }
 

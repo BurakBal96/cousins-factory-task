@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 
-export const Row = ({data}) => {
+export const Row = ({data, readDetail}) => {
   const {
     id,
     description,
@@ -12,8 +12,10 @@ export const Row = ({data}) => {
     date,
     requiredMaterialList,
   } = data
+
+  const handleClick = () => readDetail(id)
   return (
-    <div className="invoice-row">
+    <div className="invoice-row" onClick={handleClick}>
       <div className="title">
         <div className="text">
           <span className="description">{description}</span>

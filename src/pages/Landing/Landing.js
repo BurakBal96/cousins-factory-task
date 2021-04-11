@@ -1,16 +1,22 @@
 import React from 'react'
 import {inject, observer} from 'mobx-react'
 import useDeepCompareEffect from 'use-deep-compare-effect'
-import {Button} from 'components'
+import {Button, Loader} from 'components'
 import {Row} from './Row'
+import {Detail} from './Detail'
 
 export const Landing = inject('InvoiceStore')(
   observer(props => {
     useDeepCompareEffect(() => {
-      props.InvoiceStore.read({})
+      props.InvoiceStore.read({}).then(res => {
+        const id = res.items?.[0]?.id
+        if (id) props.InvoiceStore.read({id})
+      })
     }, [props.InvoiceStore])
-    const {list, meta, state} = props.InvoiceStore
-    console.log(list)
+    const {list, item, meta, state, detailState} = props.InvoiceStore
+
+    const readDetail = id => props.InvoiceStore.read({id})
+
     return (
       <div className="landing-page">
         <div className="landing-left">
@@ -19,18 +25,31 @@ export const Landing = inject('InvoiceStore')(
         </div>
 
         <div className="landing-center">
-          <div className="header">
-            {meta.offset} to {meta.offset + meta.count} of
-            {' ' + meta.total}
-          </div>
-          <div className="list">
-            {list.map(i => (
-              <Row key={i.id} data={i} />
-            ))}
-          </div>
+          {state !== 'done' ? (
+            <Loader className="large" />
+          ) : (
+            <>
+              <div className="header">
+                {`${meta.offset + 1} to ${meta.offset + meta.count + 1} of ${
+                  meta.total
+                }`}
+              </div>
+              <div className="list">
+                {list.map(i => (
+                  <Row key={i.id} readDetail={readDetail} data={i} />
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
-        <div className="landing-right">Right - details</div>
+        <div className="landing-right">
+          {detailState !== 'done' ? (
+            <Loader className="large" />
+          ) : (
+            <Detail data={item} />
+          )}
+        </div>
       </div>
     )
   })

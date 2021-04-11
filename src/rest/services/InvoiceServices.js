@@ -1,3 +1,5 @@
+import {sleep} from 'helpers'
+
 const mockData = {
   meta: {
     count: 9,
@@ -18,7 +20,7 @@ const mockData = {
       dueDate: '2021-04-29T12:28:15.299Z',
       requiredMaterialList: [
         {name: 'External Network Card', price: 100, totalPrice: 100, amount: 1},
-        {name: 'Batch of Paper', price: 25, totalPrice: 50, amount: 2},
+        {name: 'Batch of Paper', price: 25, totalPrice: 100, amount: 4},
         {
           name: 'Outsource Frontend',
           hoursOfWork: 12,
@@ -68,13 +70,11 @@ const mockData = {
         {
           name: 'Outsource Backend',
           hoursOfWork: 50,
-          price: 2500,
           totalPrice: 2500,
         },
         {
           name: 'Outsource Devops',
           hoursOfWork: 5,
-          price: 500,
           totalPrice: 500,
         },
       ],
@@ -98,7 +98,16 @@ const populatedData = {
 export class Services {
   static read = async ({params}) => {
     // return await request.get(`/`, params)
-
+    await sleep(1500)
     return populatedData
+  }
+
+  static detail = async ({id, params}) => {
+    // return await request.get(`/${id}`, params)
+    await sleep(500)
+    return {
+      meta: populatedData.meta,
+      item: populatedData.items.find(i => String(i.id) === String(id)),
+    }
   }
 }

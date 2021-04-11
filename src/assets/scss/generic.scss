@@ -1,3 +1,11 @@
+.capitalized {
+  text-transform: capitalize;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
 .horizon {
   display: flex;
   flex-direction: row !important;
@@ -129,7 +137,6 @@
 .text-underline {
   text-decoration: underline;
 }
-
 
 // Percent widths
 .per-auto {

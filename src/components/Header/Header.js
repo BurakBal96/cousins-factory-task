@@ -1,5 +1,7 @@
 import React from 'react'
 
 export const Header = () => {
-  return null
+  return <header>
+    <div>Home</div>
+  </header>
 }

@@ -34,6 +34,17 @@
     }
   }
 
+  &.add-btn{
+    background-color: var(--light-green);
+    border-radius: 5px;
+
+    &.light {
+      background-color: transparent !important;
+      border: solid 1px var(--light-green);
+      color: var(--light-green);
+    }
+  }
+
   &.small {
     height: 30px;
     font-size: 12px;

@@ -1,0 +1,120 @@
+.landing-page {
+  width: 100%;
+  display: inline-grid;
+  grid-template-columns: 15% 40% auto;
+  grid-template-rows: 95vh;
+
+  .landing-left {
+    display: flex;
+    flex-direction: column;
+
+    padding: 1em 2em;
+  }
+
+  .landing-center {
+    padding: 1em 2em;
+
+    display: flex;
+    flex-direction: column;
+
+    .header {
+      display: flex;
+      align-items: flex-end;
+      flex-direction: column;
+      margin: 10px 10px;
+    }
+
+    .list {
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+
+      .invoice-row + .invoice-row {
+        margin-top: 20px;
+      }
+
+      .invoice-row {
+        border: 1px solid gray;
+        border-radius: 15px;
+        padding: 1em 2em;
+
+        hr {
+          border: none;
+          border-top: 1px dashed gray;
+        }
+
+        .title {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          .text {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            .description {
+              font-size: 14px;
+            }
+
+            .note {
+              font-size: 12px;
+              color: var(--gray);
+            }
+          }
+
+          .status {
+            min-width: 100px;
+            max-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20%/50%;
+            padding: 10px;
+            text-transform: capitalize;
+            font-weight: 200;
+
+            &.paid {
+              border: 1px solid var(--light-green);
+              background-color: var(--light-green);
+              color: #27ae60;
+            }
+
+            &.outstanding {
+              border: 1px solid var(--gray);
+              background-color: var(--gray);
+              color: #c0c0c0;
+            }
+
+            &.late {
+              border: 1px solid #ff0033;
+              background-color: #ff0033;
+              color: #ffcccc;
+            }
+          }
+        }
+
+        .details {
+          display: grid;
+          grid-template-columns: auto 11ex;
+          //font-size: 12px;
+
+          .info {
+            white-space: nowrap;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: space-between;
+          }
+        }
+      }
+    }
+  }
+
+  .landing-right {
+    display: flex;
+    flex-direction: column;
+
+    padding: 1em 2em;
+  }
+}

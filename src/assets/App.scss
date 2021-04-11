@@ -9,6 +9,9 @@
 // components
 @import '../components/index.scss';
 
+
+$scroll-thumb-background: #515767;
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -19,6 +22,8 @@ body{
   color: #fafafa;
   margin:0;
   padding: 0;
+  scrollbar-color: $scroll-thumb-background var(--background);
+  scrollbar-width: thin;
 }
 
 $scroll-width: 5px;
@@ -42,7 +47,7 @@ $scroll-padding: 5px;
 ::-webkit-scrollbar-thumb {
   border: $scroll-padding solid var(--background);
   background-clip: padding-box;
-  background: #515767;
+  background: $scroll-thumb-background;
   border-radius: 10px;
 }
 

@@ -1,0 +1,21 @@
+@import './scss/generic';
+@import './scss/font';
+@import './scss/custom';
+@import './scss/colors';
+
+// pages
+@import "../pages/Landing/style";
+
+// components
+@import '../components/index.scss';
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+
+body{
+  background-color: #1c1c1e;
+  margin:0;
+  padding: 0;
+}

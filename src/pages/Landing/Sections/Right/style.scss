@@ -1,0 +1,41 @@
+.landing-page {
+  .landing-right {
+    background-color: var(--background);
+    color: #fafafa;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+
+    padding: 10px 15px;
+
+    .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 10px 10px;
+      letter-spacing: 0.05ex;
+    }
+
+    .container {
+      display: grid;
+      padding: 20px 15px;
+      overflow-x: hidden;
+      flex-direction: column;
+      grid-template-columns: 20% auto;
+      grid-row-gap: 10px;
+      letter-spacing: 0.05ex;
+
+      .ul{
+        margin: 0;
+      }
+    }
+
+    .actions{
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      right: 30px;
+      bottom: 10px;
+    }
+  }
+}

@@ -73,4 +73,13 @@
     }
   }
 
+  &.circle{
+    border-radius: 50% !important;
+
+    &:hover,
+    &:focus {
+      outline: none;
+    }
+  }
+
 }

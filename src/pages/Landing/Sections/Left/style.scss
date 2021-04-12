@@ -1,0 +1,27 @@
+.landing-page {
+  .landing-left {
+    background-color: var(--background);
+    color: #fafafa;
+    display: flex;
+    flex-direction: column;
+
+    padding: 5px 10px;
+  }
+}
+
+.material-form {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  white-space: nowrap;
+
+  .input-container + .input-container {
+    margin-left: 10px;
+  }
+
+  .button-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+}

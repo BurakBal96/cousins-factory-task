@@ -1,0 +1,15 @@
+.date-picker-container{
+  display: flex;
+  flex-direction: row;
+  .label{
+    letter-spacing: 0.1ex;
+    margin-left: 5px;
+    color: #fefefe
+  }
+
+  .error{
+    letter-spacing: 0.1ex;
+    margin-left: 5px;
+    color: var(--alert)
+  }
+}

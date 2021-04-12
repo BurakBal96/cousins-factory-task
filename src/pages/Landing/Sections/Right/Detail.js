@@ -18,15 +18,15 @@ export const Detail = ({data}) => {
     requiredMaterialList,
   } = data
 
-  const mailto =
-    'mailto:?body=' +
-    encodeURIComponent(JSON.stringify(data))
+  const mailto = 'mailto:?body=' + encodeURIComponent(JSON.stringify(data))
 
   return (
     <>
       <div className="header">
         <span>Details of {description}</span>
-          <span>Status: <span className="uppercase">{status}</span></span>
+        <span>
+          Status: <span className="uppercase">{status}</span>
+        </span>
       </div>
       <div className="container">
         <div>ID</div>
@@ -37,7 +37,8 @@ export const Detail = ({data}) => {
 
         <div>Total Price (w/o tax)</div>
         <div>
-          : {totalPrice} {currencySign}
+          : {currencySign}
+          {totalPrice}
         </div>
 
         <div>Tax Rate</div>
@@ -45,7 +46,8 @@ export const Detail = ({data}) => {
 
         <div>Total Price</div>
         <div>
-          : {taxIncludedPrice} {currencySign}
+          : {currencySign}
+          {taxIncludedPrice}
         </div>
 
         <div>Transaction Date</div>
@@ -58,7 +60,7 @@ export const Detail = ({data}) => {
         <div>
           <ul className="ul">
             {requiredMaterialList.map(i => (
-              <li>
+              <li key={id + i.name}>
                 {i.name}
                 <ul>
                   {i.price ? <li>Price: {i.price}</li> : ''}

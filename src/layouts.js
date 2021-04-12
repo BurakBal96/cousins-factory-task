@@ -1,5 +1,6 @@
 import React from 'react'
 import {Header} from 'components'
+import 'antd/dist/antd.css'
 import './assets/App.scss'
 
 const Content = props => <div id="page">{props.children}</div>

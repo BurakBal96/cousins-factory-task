@@ -1,0 +1,30 @@
+.ant-modal-header {
+  background-color: var(--background);
+  border-bottom: 1px solid var(--dark-background);
+}
+
+.ant-modal-body{
+  background-color: var(--background);
+}
+
+.ant-modal-footer{
+  background-color: var(--background);
+  border-top: 1px solid var(--dark-background);
+}
+
+.ant-modal-title{
+  color: #fafafa
+}
+
+.ant-modal-close-x{
+  color: #fefefe
+}
+
+.ant-picker {
+  background: var(--background);
+  border: 1px solid var(--dark-background);
+
+  input{
+    color: #fefefe;
+  }
+}

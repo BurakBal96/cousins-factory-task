@@ -25,12 +25,12 @@ export const Left = inject('InvoiceStore')(
 
     const handleCreate = data => {
       console.log('Created Data', data)
-      setFilterModal(false)
+      setCreateModal(false)
     }
 
     const handleFilter = data => {
       navigate('?' + qs.stringify(data))
-      setCreateModal(false)
+      setFilterModal(false)
       // console.log(data)
     }
 

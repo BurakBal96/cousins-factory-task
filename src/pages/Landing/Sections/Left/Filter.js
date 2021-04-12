@@ -9,17 +9,20 @@ export const Filter = ({
   toggleModal = () => null,
   params = {},
 }) => {
+  const defaultValues = {status: '', ...params}
+
   const {register, reset, handleSubmit} = useForm({
-    defaultValues: {status: '', ...params},
+    defaultValues,
   })
 
   const handleToggleModal = () => {
-    if (open) reset(params)
+    if (open) reset({...defaultValues, ...params})
 
     toggleModal()
   }
 
-  const handleFilter = async data => {
+  const handleFilter = async _data => {
+    const data = {...defaultValues, ..._data};
     await onSubmit(data)
 
     reset(data)

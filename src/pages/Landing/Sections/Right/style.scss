@@ -12,8 +12,20 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      margin: 10px 10px;
+      margin: 10px 30px 10px 10px;
       letter-spacing: 0.05ex;
+
+      .paid {
+        color: #69e53b;
+      }
+
+      .outstanding {
+        color: #2e7277;
+      }
+
+      .late {
+        color: #ff0033;
+      }
     }
 
     .container {

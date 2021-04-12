@@ -1,4 +1,5 @@
 import {useRef, useEffect} from 'react'
+export {qs} from './QueryString'
 
 export const sleep = async (delay = 2000) =>
   await new Promise(r => setTimeout(r, delay))
@@ -16,7 +17,6 @@ export const get = (object = {}, keys = '', defaultVal) => {
   }
   return object === undefined ? defaultVal : object
 }
-
 
 export const kFormatter = num => {
   return Math.abs(num) > 999

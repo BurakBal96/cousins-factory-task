@@ -98,11 +98,15 @@ const populatedData = {
 export class Services {
   static read = async ({params}) => {
     // return await request.get(`/`, params)
-    await sleep(1500)
-    return populatedData
+    // await sleep(1500)
+    const filteredItems = populatedData.items.filter(i =>
+      Object.entries(params).every(([key, val]) => !val || i[key] === val)
+    )
+    // console.log(filteredItems)
+    return {...populatedData, items: filteredItems}
   }
 
-  static detail = async ({id, params}) => {
+  static detail = async ({id}) => {
     // return await request.get(`/${id}`, params)
     await sleep(500)
     return {

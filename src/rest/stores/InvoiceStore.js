@@ -1,6 +1,6 @@
 import {action, computed, makeObservable, observable, toJS} from 'mobx'
 import {InvoiceModel as Model, InvoiceMeta as Meta} from '../models'
-import {InvoiceServices as Service} from "../services"
+import {InvoiceServices as Service} from '../services'
 
 export default class InvoiceStore {
   _list = new observable.map()
@@ -43,6 +43,7 @@ export default class InvoiceStore {
   }
 
   fetchSuccess(res) {
+    this._list = new observable.map()
     if (res.items)
       res.items.forEach(i => {
         const item = new Model(i || {})
@@ -50,7 +51,7 @@ export default class InvoiceStore {
       })
     if (res.meta) this.meta = new Meta(res.meta)
     this.state = 'done'
-    return res;
+    return res
   }
 
   handleError(error) {

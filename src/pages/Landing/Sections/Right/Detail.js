@@ -25,7 +25,7 @@ export const Detail = ({data}) => {
       <div className="header">
         <span>Details of {description}</span>
         <span>
-          Status: <span className="uppercase">{status}</span>
+          Status: <span className={"uppercase "+status}>{status}</span>
         </span>
       </div>
       <div className="container">
